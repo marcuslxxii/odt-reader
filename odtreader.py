@@ -112,19 +112,11 @@ def odt2str(nome_file, normalizza_spazi_virgolette=True,
         solo "xxx"
         :type testo: str
         """
-        trace = False
-        if 'Codice' in testo and 'Fiscale' in testo:
-            trace = True
-            print('\n' + testo)
-        
         nonlocal forms
         nonlocal shift_invio
         sub_out = ''
         i_t = testo.find('<text:')
         i_d = testo.find('<draw:')
-        
-        if trace:
-            print('i_t={} - i_d={}'.format(i_t, i_d))
         
         if i_t > -1 and (i_d == -1 or i_t < i_d):
             sub_out = testo[:i_t]
